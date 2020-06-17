@@ -19,6 +19,9 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.ViewGroup.LayoutParams;
+import java.io.File;
+import android.os.Environment;
+
 
 import com.luxand.FSDK;
 

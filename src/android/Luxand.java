@@ -13,6 +13,8 @@ import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.content.Context;
 import android.util.Log;
+import java.io.File;
+import android.os.Environment;
 
 import com.luxand.FSDK;
 
