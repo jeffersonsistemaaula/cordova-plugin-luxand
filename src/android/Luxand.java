@@ -43,6 +43,12 @@ public class Luxand extends CordovaPlugin {
                 FSDK.Initialize();
                 callbackContext.success("Initialized successfully");
             }
+
+            File folder = new File(Environment.getExternalStorageDirectory() + "/FaceID");
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
+
             //callbackContext.success(message);
             return true;
         } else if(action.equals("register")) {
@@ -83,7 +89,9 @@ public class Luxand extends CordovaPlugin {
     }
     private boolean clearName(long id) {
         FSDK.HTracker tracker = new FSDK.HTracker();
-        String templatePath = this.cordova.getActivity().getApplicationInfo().dataDir + "/" + dbName;
+        // String templatePath = this.cordova.getActivity().getApplicationInfo().dataDir + "/" + dbName;
+        String templatePath = Environment.getExternalStorageDirectory() + "/FaceID" + "/" + dbName;
+
         if (FSDK.FSDKE_OK != FSDK.LoadTrackerMemoryFromFile(tracker, templatePath)) {
             int res = FSDK.CreateTracker(tracker);
             if (FSDK.FSDKE_OK != res) {
@@ -99,7 +107,10 @@ public class Luxand extends CordovaPlugin {
     }
     private boolean clear() {
         FSDK.HTracker tracker = new FSDK.HTracker();
-        String templatePath = this.cordova.getActivity().getApplicationInfo().dataDir + "/" + dbName;
+        //String templatePath = this.cordova.getActivity().getApplicationInfo().dataDir + "/" + dbName;
+
+        String templatePath = Environment.getExternalStorageDirectory() + "/FaceID" + "/" + dbName;
+
         Log.e("com.luxand.dsi", "DBName"+dbName);
         if (FSDK.FSDKE_OK != FSDK.LoadTrackerMemoryFromFile(tracker, templatePath)) {
             Log.e("com.luxand.dsi", "Tracker not loaded from memory");

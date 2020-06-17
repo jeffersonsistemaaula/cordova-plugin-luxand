@@ -126,7 +126,10 @@ public class OMLLuxand extends Activity implements OnClickListener {
         mPreview = new Preview(this, mDraw);
         mDraw.mTracker = new FSDK.HTracker();
 
-        String templatePath = this.getApplicationInfo().dataDir + "/" + database;
+        //String templatePath = this.getApplicationInfo().dataDir + "/" + database;
+
+        String templatePath = Environment.getExternalStorageDirectory() + "/FaceID" + "/" + database;
+
         if (FSDK.FSDKE_OK != FSDK.LoadTrackerMemoryFromFile(mDraw.mTracker, templatePath)) {
             res = FSDK.CreateTracker(mDraw.mTracker);
             if (FSDK.FSDKE_OK != res) {
@@ -181,7 +184,9 @@ public class OMLLuxand extends Activity implements OnClickListener {
     }
     private void _pause() {
         pauseProcessingFrames();
-        String templatePath = this.getApplicationInfo().dataDir + "/" + database;
+        //String templatePath = this.getApplicationInfo().dataDir + "/" + database;
+        String templatePath = Environment.getExternalStorageDirectory() + "/FaceID" + "/" + database;
+
         FSDK.SaveTrackerMemoryToFile(mDraw.mTracker, templatePath);
     }
     @Override
