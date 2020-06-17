@@ -26,7 +26,8 @@ public class Luxand extends CordovaPlugin {
     private CallbackContext callbackContext;
     private static final int IDENTIFY_CODE = 2;
     private static int loginTryCount;
-    private String [] permissions = { Manifest.permission.CAMERA };
+    private String [] permissions = { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE  };
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
         Log.e("com.luxand.dsi-------", action+":"+data.toString());
